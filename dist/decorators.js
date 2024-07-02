@@ -5,30 +5,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-function LoggerD(logString) {
-    return function (constructor) {
-        console.log(logString || "Logging...");
-        console.log(constructor);
-    };
+function Logger(constructor) {
+    console.log("Logging...");
+    console.log(constructor);
 }
-function WithTemplate(template, hookId) {
-    return function (constructor) {
-        const hookEl = document.getElementById(hookId);
-        const p = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector("h1").textContent = p.name;
-        }
-    };
-}
-let PersonD = class PersonD {
+let PersonC = class PersonC {
     constructor() {
         this.name = "Max";
         console.log("Creating person object...");
     }
 };
-PersonD = __decorate([
-    WithTemplate("<h1>My Person Object</h1>", "app")
-], PersonD);
-const person = new PersonD();
-console.log(person);
+PersonC = __decorate([
+    Logger
+], PersonC);
+const pers = new PersonC();
+console.log(pers);
